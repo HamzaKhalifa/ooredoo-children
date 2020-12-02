@@ -7,11 +7,11 @@ export default {
         margin: '40px 10px'
     },
     randomButton: {
-        backgroundColor: '#2196f3',
+        backgroundColor: 'white',
         border: 'none',
         padding: '15px 30px',
         fontSize: 30,
-        color: 'white',
+        color: '#f00',
         cursor: 'pointer',
         marginTop: 30,
         borderRadius: 20

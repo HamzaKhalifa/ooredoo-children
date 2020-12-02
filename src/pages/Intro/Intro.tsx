@@ -5,7 +5,7 @@ import { IColors } from '../../components/ooreedoo/Ooredoo';
 import styles from './styles';
 import { RouteComponentProps } from 'react-router-dom';
 
-export const defaultColors: string[] = ['#FFC107', '#0000ff', '#008000', '#ffff00']; 
+export const defaultColors: string[] = ['#ffc107', '#0000ff', '#008000', '#ffff00']; 
 
 const getRandomInt: Function = (min: number, max: number) => {
     min = Math.ceil(min);
@@ -75,7 +75,7 @@ const Intro: React.FunctionComponent<RouteComponentProps> = (props: RouteCompone
 
             <button style={styles.randomButton} onClick={generateRandomColors}>Click me to generate random colors!</button>
 
-            <button style={{...styles.randomButton, backgroundColor: '#ff9800'}} onClick={() => {
+            <button style={{...styles.randomButton, backgroundColor: 'white'}} onClick={() => {
                 props.history.push('/play');
             }}>Click Me To Start!</button>
         </div>
