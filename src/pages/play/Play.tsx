@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { CirclePicker } from 'react-color';
-import { FaTimesCircle, FaCheckCircle } from 'react-icons/fa';
+import { RouteComponentProps } from 'react-router-dom';
 
 import Ooredoo, { IColors } from '../../components/ooreedoo/Ooredoo';
 import { IntroContext } from '../Intro/Intro';
@@ -13,7 +13,7 @@ import styles from './styles';
 interface IPlay {
     response: IColors,
     attempts: number,
-    isModalOpen: false,
+    isModalOpen: boolean,
 }
 
 const initialState: IPlay = {
@@ -27,7 +27,7 @@ const initialState: IPlay = {
     isModalOpen: false
 }
 
-const Play: Function = ({ history }) => {
+const Play: React.FunctionComponent<RouteComponentProps> = (props: RouteComponentProps) => {
     const[play, setPlay] = useState<IPlay>(initialState);
     const { colors, setColors } = useContext(IntroContext);
 
@@ -77,7 +77,7 @@ const Play: Function = ({ history }) => {
 
             <button style={{...styles.backButton, backgroundColor: '#ff9800'}} onClick={() => {
                 setPlay(initialState);
-                history.push('/');
+                props.history.push('/');
             }}>BACK</button>
 
             <MyModal 

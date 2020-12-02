@@ -1,8 +1,9 @@
-import React, { useState, createContext, useContext } from 'react';
+import React, { useState, createContext, useContext, Dispatch, SetStateAction, FunctionComponent } from 'react';
 
 import Ooredoo from '../../components/ooreedoo/Ooredoo';
 import { IColors } from '../../components/ooreedoo/Ooredoo';
 import styles from './styles';
+import { RouteComponentProps } from 'react-router-dom';
 
 export const defaultColors: string[] = ['#ff0000', '#0000ff', '#008000', '#ffff00']; 
 
@@ -40,7 +41,16 @@ export const getRandomColors: Function = (): IColors => {
     return colors;
 }
 
-export const IntroContext = createContext();
+type contextType = {
+    colors: IColors,
+    setColors: Dispatch<SetStateAction<IColors>>
+}
+
+export const IntroContext = createContext<contextType>({
+    colors: getRandomColors(),
+    setColors: () => {}
+});
+
 
 export const IntroContextProvider: React.FC = (props) => {
     const [colors, setColors] = useState<IColors>(getRandomColors());
@@ -52,7 +62,7 @@ export const IntroContextProvider: React.FC = (props) => {
     );
 }
 
-const Intro: React.FC = (props) => {
+const Intro: React.FunctionComponent<RouteComponentProps> = (props: RouteComponentProps) => {
     const { colors, setColors } = useContext(IntroContext);
 
     const generateRandomColors = () => {
