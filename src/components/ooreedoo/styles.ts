@@ -1,7 +1,9 @@
 const styles = {
     container: {
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        justifyContent: 'center'
     },
     o: {
         fontSize: 60,
