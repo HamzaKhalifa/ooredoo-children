@@ -3,7 +3,10 @@ const styles = {
         display: 'flex',
         alignItems: 'center',
         flexWrap: 'wrap',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        // backgroundColor: '#ffe3e3',
+        padding: '0 10 10 10',
+        borderRadius: 10
     },
     o: {
         fontSize: 60,
@@ -14,13 +17,18 @@ const styles = {
     },
     otherLetters: {
         fontSize: 30,
-        margin: 10
+        margin: 10,
+        color: 'white'
     },
     checkIcon: {
         position: 'absolute',
         top: 60,
-        fontSize: 25,
-        left: 3
+        fontSize: 20,
+        left: 1,
+        backgroundColor: 'white',
+        borderRadius: 20,
+        display: 'flex',
+        padding: 3
     }
 }
 

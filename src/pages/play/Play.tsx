@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { CirclePicker } from 'react-color';
+import { FaTimesCircle, FaCheckCircle } from 'react-icons/fa';
 import { RouteComponentProps } from 'react-router-dom';
 
 import Ooredoo, { IColors } from '../../components/ooreedoo/Ooredoo';
@@ -18,10 +19,10 @@ interface IPlay {
 
 const initialState: IPlay = {
     response: {
-        first: '#000',
-        second: '#000',
-        third: '#000',
-        fourth: '#000'
+        first: '#fff',
+        second: '#fff',
+        third: '#fff',
+        fourth: '#fff'
     },
     attempts: 0,
     isModalOpen: false
@@ -67,8 +68,14 @@ const Play: React.FunctionComponent<RouteComponentProps> = (props: RouteComponen
 
             <div style={styles.circlePickers as React.CSSProperties}>
                 {ray.map((element, index) => (
-                    <div key={index} style={styles.singleCirclePicker as React.CSSProperties}>
-                        <CirclePicker colors={defaultColors} onChangeComplete={(color) => { setColor(color.hex, element); }} />
+                    <div key={index} style={{...styles.singleCirclePicker, borderColor: play.response[element]} as React.CSSProperties}>
+                        <CirclePicker width={100} value='#0000ff' colors={defaultColors} onChangeComplete={(color) => { setColor(color.hex, element); }} />
+                        <span style={{...styles.closeO, color: play.response[element]} as React.CSSProperties}>
+                            O 
+                            {play.response[element + 'Correct'] ? 
+                                <span style={{...styles.closeOCorrectOrFalseIcon, color: 'green'} as React.CSSProperties}><FaCheckCircle /></span>
+                                : <span style={{...styles.closeOCorrectOrFalseIcon, color: 'red'} as React.CSSProperties}><FaTimesCircle /></span>}
+                        </span>
                     </div>
                 ))}
             </div>

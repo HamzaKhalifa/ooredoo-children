@@ -16,10 +16,12 @@ export default {
         backgroundColor: '#c6e2ff',
         padding: 10,
         borderRadius: 20,
-        width: 155,
+        // width: 155,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        border: '4px solid white',
+        boxSizing: 'border-box',
     },
     backButton: {
         backgroundColor: '#2196f3',
@@ -28,12 +30,29 @@ export default {
         fontSize: 30,
         color: 'white',
         cursor: 'pointer',
-        marginTop: 30
+        marginTop: 30,
+        borderRadius: 20
     },
     attempts: {
         fontSize: 25,
         margin: 5,
-        color: 'red'
+        color: 'white',
+    },
+    closeO: {
+        fontSize: 40,
+        position: 'relative',
+        display: 'flex',
+        alignItems: 'center'
+    },
+    closeOCorrectOrFalseIcon: {
+        // position: 'absolute',
+        fontSize: 20,
+        left: 0,
+        marginLeft: 5,
+
+        backgroundColor: 'white',
+        borderRadius: 20,
+        display: 'flex',
+        padding: 3
     }
-    
 }

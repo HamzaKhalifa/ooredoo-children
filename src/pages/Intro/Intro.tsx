@@ -5,7 +5,7 @@ import { IColors } from '../../components/ooreedoo/Ooredoo';
 import styles from './styles';
 import { RouteComponentProps } from 'react-router-dom';
 
-export const defaultColors: string[] = ['#ff0000', '#0000ff', '#008000', '#ffff00']; 
+export const defaultColors: string[] = ['#FFC107', '#0000ff', '#008000', '#ffff00']; 
 
 const getRandomInt: Function = (min: number, max: number) => {
     min = Math.ceil(min);

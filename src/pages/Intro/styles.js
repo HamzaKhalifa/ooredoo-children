@@ -13,6 +13,7 @@ export default {
         fontSize: 30,
         color: 'white',
         cursor: 'pointer',
-        marginTop: 30
+        marginTop: 30,
+        borderRadius: 20
     }
 }
