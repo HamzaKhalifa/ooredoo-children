@@ -41,12 +41,12 @@ export const getRandomColors: Function = (): IColors => {
     return colors;
 }
 
-type contextType = {
+type ContextType = {
     colors: IColors,
     setColors: Dispatch<SetStateAction<IColors>>
 }
 
-export const IntroContext = createContext<contextType>({
+export const IntroContext = createContext<ContextType>({
     colors: getRandomColors(),
     setColors: () => {}
 });

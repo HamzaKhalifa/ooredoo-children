@@ -20,7 +20,7 @@ const styles = {
         position: 'absolute',
         top: 60,
         fontSize: 25,
-        left: 8
+        left: 3
     }
 }
 

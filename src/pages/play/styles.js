@@ -13,7 +13,7 @@ export default {
     },
     singleCirclePicker: {
         margin: 30,
-        backgroundColor: 'white',
+        backgroundColor: '#c6e2ff',
         padding: 10,
         borderRadius: 20,
         width: 155,
