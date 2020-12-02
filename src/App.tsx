@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { CirclePicker } from 'react-color';
+
+import Intro, { IntroContextProvider } from './pages/Intro/Intro';
+import Play from './pages/play/Play';
+
+
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={styles.container}>
+      <IntroContextProvider>
+        <BrowserRouter>
+          <Route component={Intro} path='/' exact />
+          <Route component={Play} path='/play' exact />
+        </BrowserRouter>
+      </IntroContextProvider>
     </div>
   );
+}
+
+const styles = {
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
 }
 
 export default App;
