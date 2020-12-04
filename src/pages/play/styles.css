@@ -6,7 +6,7 @@
 }
 
 .play__single_circle_picker {
-    margin: 30px;
+    margin: 5px;
     background-color: #c6e2ff;
     padding: 10px;
     border-radius: 20px;
@@ -59,11 +59,4 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
-
-@media screen and (max-width: 375px) 
-{
-    .play__single_circle_picker {
-        margin: 5px;
-    }
 }
