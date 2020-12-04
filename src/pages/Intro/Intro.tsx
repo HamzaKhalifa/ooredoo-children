@@ -2,8 +2,9 @@ import React, { useState, createContext, useContext, Dispatch, SetStateAction, F
 
 import Ooredoo from '../../components/ooreedoo/Ooredoo';
 import { IColors } from '../../components/ooreedoo/Ooredoo';
-import styles from './styles';
 import { RouteComponentProps } from 'react-router-dom';
+
+import './styles.css';
 
 export const defaultColors: string[] = ['#ffc107', '#0000ff', '#008000', '#ffff00']; 
 
@@ -70,12 +71,12 @@ const Intro: React.FunctionComponent<RouteComponentProps> = (props: RouteCompone
     }
 
     return (
-        <div style={styles.container as React.CSSProperties}>
+        <div className='intro__container'>
             <Ooredoo {...colors} />
 
-            <button style={styles.randomButton} onClick={generateRandomColors}>Click me to generate random colors!</button>
+            <button className='intro__random_button' onClick={generateRandomColors}>Click me to generate random colors!</button>
 
-            <button style={{...styles.randomButton, backgroundColor: 'white'}} onClick={() => {
+            <button className='intro__random_button' onClick={() => {
                 props.history.push('/play');
             }}>Click Me To Start!</button>
         </div>

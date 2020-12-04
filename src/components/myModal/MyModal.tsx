@@ -18,14 +18,18 @@ const customStyles = {
         transform: 'translate(-50%, -50%)',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: '#f00',
+        borderRadius: 10,
+        border: 'none'
     },
     restartButton: {
-        backgroundColor: '#2196f3',
+        backgroundColor: 'white',
         border: 'none',
         padding: '15px 30px',
         fontSize: 25,
-        color: 'white',
+        borderRadius: 20,
+        color: '#f00',
         cursor: 'pointer',
         marginTop: 30
     }
@@ -43,8 +47,8 @@ const MyModal: React.FC<IModal> = (modal: IModal) => {
             style={customStyles}
             onAfterOpen={() => {}}
         >
-            <h2 style={{color: 'red', fontSize: 30}}>Congratulations!!</h2>
-            <div style={{fontSize: 20}}>You solved the problem in <span style={{fontSize: 30, color: 'red'}}>{modal.attempts}</span> attempts!</div>
+            <h2 style={{color: 'white', fontSize: 30}}>Congratulations!!</h2>
+            <div style={{fontSize: 20, color: 'white', textAlign: 'center'}}>You solved the problem in <span style={{fontSize: 30, color: '#33ff00'}}>{modal.attempts}</span> attempts!</div>
             <button style={customStyles.restartButton as React.CSSProperties} onClick={modal.onRequestClose}>Restart</button>
         </Modal>
     );

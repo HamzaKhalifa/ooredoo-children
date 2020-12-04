@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaTimesCircle, FaCheckCircle } from 'react-icons/fa';
 
-import styles from './styles';
+import './styles.css';
 
 export interface IColors {
     first: string,
@@ -16,38 +16,37 @@ export interface IColors {
 
 const Ooredoo: React.FC<IColors> = (colors: IColors) => {
     return (
-        <div style={styles.container as React.CSSProperties}>
+        <div className='ooredoo__container'>
 
-            <span style={{...styles.o, color: colors.first} as React.CSSProperties}>
+            <span className='ooredoo__o' style={{color: colors.first} as React.CSSProperties}>
                 <span>O</span>
-                <span style={{...styles.checkIcon, color: colors.firstCorrect ? 'green' : 'red'} as React.CSSProperties}>
+                <span className='ooredoo__check_icon' style={{color: colors.firstCorrect ? 'green' : 'red'} as React.CSSProperties}>
                     {colors.firstCorrect ? <FaCheckCircle/> : <FaTimesCircle/>}
                 </span>
             </span>
 
 
-            <span style={{...styles.o, color: colors.second} as React.CSSProperties}>
+            <span className='ooredoo__o' style={{color: colors.second} as React.CSSProperties}>
                 <span>O</span>
-                <span style={{...styles.checkIcon, color: colors.secondCorrect ? 'green' : 'red'} as React.CSSProperties}>
+                <span className='ooredoo__check_icon' style={{color: colors.secondCorrect ? 'green' : 'red'} as React.CSSProperties}>
                     {colors.secondCorrect ? <FaCheckCircle/> : <FaTimesCircle/>}
                 </span>
             </span>
 
-            <span style={styles.otherLetters}>R</span>
-            <span style={styles.otherLetters}>E</span>
-            <span style={styles.otherLetters}>D</span>
+            <span className='ooredoo__other_letters'>R</span>
+            <span className='ooredoo__other_letters'>E</span>
+            <span className='ooredoo__other_letters'>D</span>
 
-            <span style={{...styles.o, color: colors.third} as React.CSSProperties}>
+            <span className='ooredoo__o' style={{color: colors.third} as React.CSSProperties}>
                 <span>O</span>
-                <span style={{...styles.checkIcon, color: colors.thirdCorrect ? 'green' : 'red'} as React.CSSProperties}>
+                <span className='ooredoo__check_icon' style={{color: colors.thirdCorrect ? 'green' : 'red'} as React.CSSProperties}>
                     {colors.thirdCorrect ? <FaCheckCircle/> : <FaTimesCircle/>}
                 </span>
             </span>
 
-
-            <span style={{...styles.o, color: colors.fourth} as React.CSSProperties}>
+            <span className='ooredoo__o' style={{color: colors.fourth} as React.CSSProperties}>
                 <span>O</span>
-                <span style={{...styles.checkIcon, color: colors.fourthCorrect ? 'green' : 'red'} as React.CSSProperties}>
+                <span className='ooredoo__check_icon' style={{color: colors.fourthCorrect ? 'green' : 'red'} as React.CSSProperties}>
                     {colors.fourthCorrect ? <FaCheckCircle/> : <FaTimesCircle/>}
                 </span>
             </span>

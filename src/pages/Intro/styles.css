@@ -1,0 +1,26 @@
+.intro__container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 40px 10px;
+}
+
+.intro__random_button {
+    background-color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 30px;
+    color: #f00;
+    cursor: pointer;
+    margin-top: 30px;
+    border-radius: 20px;
+}
+
+@media screen and (max-width: 375px) {
+    .intro__random_button {
+        font-size: 20px;
+        padding: 10px;
+        margin: 10px 30px;
+    }
+}

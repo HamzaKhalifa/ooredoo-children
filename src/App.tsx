@@ -1,16 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { CirclePicker } from 'react-color';
 
 import Intro, { IntroContextProvider } from './pages/Intro/Intro';
 import Play from './pages/play/Play';
-
 
 import './App.css';
 
 const App: React.FC = () => {
   return (
-    <div style={styles.container}>
+    <div className='app__container' style={styles.container}>
       <IntroContextProvider>
         <BrowserRouter>
           <Route component={Intro} path='/' exact />

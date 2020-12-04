@@ -9,7 +9,7 @@ import { defaultColors } from '../Intro/Intro';
 import MyModal from '../../components/myModal/MyModal';
 import { getRandomColors } from '../Intro/Intro';
 
-import styles from './styles';
+import './styles.css';
 
 interface IPlay {
     response: IColors,
@@ -43,8 +43,6 @@ const Play: React.FunctionComponent<RouteComponentProps> = (props: RouteComponen
     }
 
     const submit = () => {
-        console.log('colors', colors);
-        console.log('response', play.response);
         setPlay({
             ...play,
             attempts: play.attempts + 1,
@@ -64,27 +62,27 @@ const Play: React.FunctionComponent<RouteComponentProps> = (props: RouteComponen
 
     const ray = ['first', 'second', 'third', 'fourth']
     return (
-        <div style={styles.container as React.CSSProperties} >
+        <div className='play__container' >
             <Ooredoo {...play.response} />
-            <p style={styles.attempts}>Attempts: {play.attempts}</p>
+            <p className='play__attempts'>Attempts: {play.attempts}</p>
 
-            <div style={styles.circlePickers as React.CSSProperties}>
+            <div className='play__circle_pickers'>
                 {ray.map((element, index) => (
-                    <div key={index} style={{...styles.singleCirclePicker, borderColor: play.response[element]} as React.CSSProperties}>
-                        <CirclePicker width={100} value='#0000ff' colors={defaultColors} onChangeComplete={(color) => { setColor(color.hex, element); }} />
-                        <span style={{...styles.closeO, color: play.response[element]} as React.CSSProperties}>
+                    <div key={index} className='play__single_circle_picker' style={{ borderColor: play.response[element]} as React.CSSProperties}>
+                        <CirclePicker value='#0000ff' colors={defaultColors} onChangeComplete={(color) => { setColor(color.hex, element); }} />
+                        <span className='play__close_o' style={{color: play.response[element]} as React.CSSProperties}>
                             O 
                             {play.response[element + 'Correct'] ? 
-                                <span style={{...styles.closeOCorrectOrFalseIcon, color: 'green'} as React.CSSProperties}><FaCheckCircle /></span>
-                                : <span style={{...styles.closeOCorrectOrFalseIcon, color: 'red'} as React.CSSProperties}><FaTimesCircle /></span>}
+                                <span className='play__close_or_correct_or_false_icon' style={{color: 'green'}}><FaCheckCircle /></span>
+                                : <span className='play__close_or_correct_or_false_icon' style={{ color: 'red'}}><FaTimesCircle /></span>}
                         </span>
                     </div>
                 ))}
             </div>
 
-            <button style={styles.backButton as React.CSSProperties} onClick={submit}>Submit To Check!</button>
+            <button className='play__back_button' onClick={submit}>Submit To Check!</button>
 
-            <button style={{...styles.backButton, backgroundColor: 'white'}} onClick={() => {
+            <button className='play__back_button' style={{backgroundColor: 'white'}} onClick={() => {
                 setPlay(initialState);
                 props.history.push('/');
             }}>BACK</button>
