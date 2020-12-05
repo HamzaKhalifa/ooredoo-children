@@ -43,6 +43,8 @@ const Play: React.FunctionComponent<RouteComponentProps> = (props: RouteComponen
     }
 
     const submit = () => {
+        console.log(play.response);
+        console.log(colors);
         setPlay({
             ...play,
             attempts: play.attempts + 1,
@@ -82,7 +84,7 @@ const Play: React.FunctionComponent<RouteComponentProps> = (props: RouteComponen
 
             <button className='play__back_button' onClick={submit}>Submit To Check!</button>
 
-            <button className='play__back_button' style={{backgroundColor: 'white'}} onClick={() => {
+            <button className='play__back_button' onClick={() => {
                 setPlay(initialState);
                 props.history.push('/');
             }}>BACK</button>

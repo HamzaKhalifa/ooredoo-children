@@ -6,7 +6,7 @@ import { RouteComponentProps } from 'react-router-dom';
 
 import './styles.css';
 
-export const defaultColors: string[] = ['#ffc107', '#0000ff', '#008000', '#ffff00']; 
+export const defaultColors: string[] = ['#ff0000', '#0000ff', '#008000', '#ffff00']; 
 
 const getRandomInt: Function = (min: number, max: number) => {
     min = Math.ceil(min);

@@ -7,7 +7,7 @@
 
 .play__single_circle_picker {
     margin: 5px;
-    background-color: #c6e2ff;
+    background-color: #73d9ff;
     padding: 10px;
     border-radius: 20px;
     display: flex;
@@ -20,11 +20,11 @@
 }
 
 .play__back_button {
-    background-color: white;
+    background-color: #f00;
     border: none;
     padding: 15px 30px;
     font-size: 30px;
-    color: #f00;
+    color: white;
     cursor: pointer;
     cursor: pointer;
     margin-top: 30px;
@@ -34,7 +34,7 @@
 .play__attempts {
     font-size: 25px;
     margin: 5px;
-    color: white;
+    color: #f00;
 }
 
 .play__close_o {

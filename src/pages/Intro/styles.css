@@ -7,11 +7,11 @@
 }
 
 .intro__random_button {
-    background-color: white;
+    background-color: #f00;
     border: none;
     padding: 15px 30px;
     font-size: 30px;
-    color: #f00;
+    color: white;
     cursor: pointer;
     margin-top: 30px;
     border-radius: 20px;
