@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import Intro from './pages/intro';
+import Intro from './pages/intro-page';
 
 import Ooredoo1Intro, { Ooredoo1IntroContextProvider } from './pages/ooredoo-1/intro';
 import Ooredoo1Play from './pages/ooredoo-1/play';
