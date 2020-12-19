@@ -1,13 +1,29 @@
-html, html button {
-    background-color: #68acff;
-    font-family: "NerkoOne"!important;
+html,
+html {
+  background-color: #68acff;
+  font-family: "NerkoOne" !important;
 }
 
-.circle-picker  {
-    justify-content: center;
+.circle-picker {
+  justify-content: center;
+}
+
+button {
+  font-family: "NerkoOne" !important;
+  color: white;
+  border: 2px solid white;
+  transition: all 0.2s;
+  background-color: #f00;
+  border: 2px solid white;
+}
+
+button:hover {
+  color: #f00;
+  border-color: #f00;
+  background-color: white;
 }
 
 @font-face {
-    font-family: 'NerkoOne';
-    src: local('NerkoOne'), url(./fonts/NerkoOne-Regular.ttf) format('truetype');
+  font-family: "NerkoOne";
+  src: local("NerkoOne"), url(./fonts/NerkoOne-Regular.ttf) format("truetype");
 }

@@ -3,21 +3,22 @@ import { CirclePicker } from 'react-color';
 import { FaTimesCircle, FaCheckCircle } from 'react-icons/fa';
 import { RouteComponentProps } from 'react-router-dom';
 
-import Ooredoo, { IColors } from '../../components/ooreedoo/Ooredoo';
-import { IntroContext } from '../Intro/Intro';
-import { defaultColors } from '../Intro/Intro';
-import MyModal from '../../components/myModal/MyModal';
-import { getRandomColors } from '../Intro/Intro';
+import Ooredoo, { IColors } from '../../../components/ooreedoo/Ooredoo';
+import { Ooredoo1IntroContext } from '../intro';
+import { defaultColors } from '../intro';
+import MyModal from '../../../components/myModal/MyModal';
+import { getRandomColors } from '../intro';
 
 import './styles.css';
+import LeaveButton from '../../../components/leave-button';
 
-interface IPlay {
+interface IOoredoo1 {
     response: IColors,
     attempts: number,
     isModalOpen: boolean,
 }
 
-const initialState: IPlay = {
+const initialState: IOoredoo1 = {
     response: {
         first: '#fff',
         second: '#fff',
@@ -28,9 +29,9 @@ const initialState: IPlay = {
     isModalOpen: false
 }
 
-const Play: React.FunctionComponent<RouteComponentProps> = (props: RouteComponentProps) => {
-    const[play, setPlay] = useState<IPlay>(initialState);
-    const { colors, setColors } = useContext(IntroContext);
+const Ooredoo1Play: React.FunctionComponent<RouteComponentProps> = (props: RouteComponentProps) => {
+    const[play, setPlay] = useState<IOoredoo1>(initialState);
+    const { colors, setColors } = useContext(Ooredoo1IntroContext);
 
     const setColor: Function = (color: string, property: string) => {
         setPlay({
@@ -64,42 +65,44 @@ const Play: React.FunctionComponent<RouteComponentProps> = (props: RouteComponen
 
     const ray = ['first', 'second', 'third', 'fourth']
     return (
-        <div className='play__container' >
+        <div className='ooredoo_1_play__container' >
             <Ooredoo {...play.response} />
-            <p className='play__attempts'>Attempts: {play.attempts}</p>
+            <p className='ooredoo_1_play__attempts'>Attempts: {play.attempts}</p>
 
-            <div className='play__circle_pickers'>
+            <div className='ooredoo_1_play__circle_pickers'>
                 {ray.map((element, index) => (
-                    <div key={index} className='play__single_circle_picker' style={{ borderColor: play.response[element]} as React.CSSProperties}>
+                    <div key={index} className='ooredoo_1_play__single_circle_picker' style={{ borderColor: play.response[element]} as React.CSSProperties}>
                         <CirclePicker value='#0000ff' colors={defaultColors} onChangeComplete={(color) => { setColor(color.hex, element); }} />
-                        <span className='play__close_o' style={{color: play.response[element]} as React.CSSProperties}>
+                        <span className='ooredoo_1_play__close_o' style={{color: play.response[element]} as React.CSSProperties}>
                             O 
                             {play.response[element + 'Correct'] ? 
-                                <span className='play__close_or_correct_or_false_icon' style={{color: 'green'}}><FaCheckCircle /></span>
-                                : <span className='play__close_or_correct_or_false_icon' style={{ color: 'red'}}><FaTimesCircle /></span>}
+                                <span className='ooredoo_1_play__close_or_correct_or_false_icon' style={{color: 'green'}}><FaCheckCircle /></span>
+                                : <span className='ooredoo_1_play__close_or_correct_or_false_icon' style={{ color: 'red'}}><FaTimesCircle /></span>}
                         </span>
                     </div>
                 ))}
             </div>
 
-            <button className='play__back_button' onClick={submit}>Submit To Check!</button>
+            <button className='ooredoo_1_play__back_button' onClick={submit}>Submit To Check!</button>
 
-            <button className='play__back_button' onClick={() => {
+            {/* <button className='ooredoo_1_play__back_button' onClick={() => {
                 setPlay(initialState);
-                props.history.push('/');
-            }}>BACK</button>
+                props.history.push('/ooredoo-1');
+            }}>BACK</button> */}
 
             <MyModal 
                 isOpen={play.isModalOpen} 
                 onRequestClose={() => {
-                setPlay(initialState);
-                setColors(getRandomColors());
-            }} 
+                    setPlay(initialState);
+                    setColors(getRandomColors());
+                }} 
                 attempts={play.attempts}
                 contentLabel='Congratulations!'
             />
+
+            <LeaveButton />
         </div>
     )
 }
 
-export default Play
+export default Ooredoo1Play

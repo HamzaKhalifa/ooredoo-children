@@ -1,0 +1,21 @@
+.leave_button {
+  position: absolute;
+  bottom: 30px;
+  font-size: 40px;
+}
+
+.leave_button a {
+  padding: 5px 30px;
+  background-color: #f00;
+  text-decoration: none;
+  border: 2px solid white;
+  border-radius: 10px;
+  color: white;
+  transition: all 0.2s;
+}
+
+.leave_button a:hover {
+  color: #f00;
+  border-color: #f00;
+  background-color: white;
+}
