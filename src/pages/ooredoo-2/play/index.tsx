@@ -44,7 +44,7 @@ const Ooredoo2Play: React.FC = () => {
         let unknown2 = unknown1;
         do {
             unknown2 = utils.getRandomInt(0, 3);
-        } while (unknown2 == unknown1);
+        } while (unknown2 === unknown1);
         let newKnown: [boolean, boolean, boolean, boolean] = [true, true, true, true];
         newKnown[unknown1] = false;
         newKnown[unknown2] = false;
@@ -92,10 +92,10 @@ const Ooredoo2Play: React.FC = () => {
     const submit = () => {
         const { o1, o2, o3, o4 } = introContext.statements;
 
-        let firstNumbersRight = (ooredoo2.response.o1 === o2 && ooredoo2.response.o2 == o1) 
-            || (ooredoo2.response.o1 === o1 && ooredoo2.response.o2 == o2) 
+        let firstNumbersRight = (ooredoo2.response.o1 === o2 && ooredoo2.response.o2 === o1) 
+            || (ooredoo2.response.o1 === o1 && ooredoo2.response.o2 === o2) 
             // If there is a multiplication by zero and one of the first elements is also 0, then the it's valids
-            || ((ooredoo2.response.o1 == 0 || ooredoo2.response.o2 == 0) && (o1 == 0 || o2 == 0))
+            || ((ooredoo2.response.o1 === 0 || ooredoo2.response.o2 === 0) && (o1 === 0 || o2 === 0))
 
         let correctMultiplication = ooredoo2.response.o1 * ooredoo2.response.o2 === ooredoo2.response.o3 * 10 + ooredoo2.response.o4
 
