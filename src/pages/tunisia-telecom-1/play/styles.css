@@ -1,0 +1,42 @@
+.tunisia_telecom__play_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tunisia_telecom_play__submit_button {
+  padding: 15px 30px;
+  font-size: 30px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+
+.tunisia_telecom_play__attempts {
+  font-size: 25px;
+  margin: 5px;
+  color: white;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.tunisia_telecom_play__expected_result_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.tunisia_telecom_exepected_result__label {
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.tuniia_telecom_play__expected_result {
+  color: white;
+  text-align: center;
+  font-size: 45px;
+  color: #f00;
+}

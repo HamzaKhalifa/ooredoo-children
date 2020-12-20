@@ -1,0 +1,31 @@
+.tunisia_telecom_intro__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tunisia_telecom_intro__play_button {
+  padding: 15px 30px;
+  font-size: 30px;
+  cursor: pointer;
+  margin-top: 30px;
+  border-radius: 20px;
+}
+
+.tunisia_telelcom__result_input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tunisia_telecom__result_input {
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+  font-size: 30px;
+  font-family: "NerkoOne" !important;
+  background-color: #f00;
+  color: white;
+  border: 2px solid white;
+}
