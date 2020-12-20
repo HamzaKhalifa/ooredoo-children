@@ -13,22 +13,22 @@ const initialLetters: ILetter[] = [
         canChange: false, letter: 'T', value: 'T', role: ERole.Neutral
     },
     { 
-        canChange: true, letter: 'U', value: '0', role: ERole.ToUse
+        canChange: true, letter: 'U', value: '0', role: ERole.ToUse, ghost: 'E'
     },
     { 
-        canChange: true, letter: 'N', value: 'X', role: ERole.Operator
+        canChange: true, letter: 'N', value: 'X', role: ERole.Operator, ghost: 'L'
     },
     { 
-        canChange: true, letter: 'I', value: '0', role: ERole.ToUse
+        canChange: true, letter: 'I', value: '0', role: ERole.ToUse, ghost: 'E'
     },
     { 
-        canChange: false, letter: 'S', value: '-', role: ERole.Operator
+        canChange: false, letter: 'S', value: '-', role: ERole.Operator, ghost: 'C'
     },
     { 
-        canChange: false, letter: 'I', value: '0', role: ERole.Result
+        canChange: false, letter: 'I', value: '0', role: ERole.Result, ghost: 'O'
     },
     { 
-        canChange: false, letter: 'E', value: '0', role: ERole.Result
+        canChange: false, letter: 'E', value: '0', role: ERole.Result, ghost: 'M'
     },
 ]
 export type IStatements = {
@@ -153,15 +153,13 @@ const TunisiaTelecom: React.FC<RouteComponentProps> = (props: RouteComponentProp
         console.log('called on result change');
         setStatements(createStatementsWithResult(newStatements));
     }
-
-
-    console.log('statements', statements);
     
     return (
         <div className="tunisia_telecom_intro__container">
             <Word 
                 onChange={onChange}
                 letters={statements.letters}
+                success={false}
             />
 
             <div className='tunisia_telelcom__result_input'>

@@ -9,15 +9,22 @@ interface IWordLetterContainer {
     value?: string,
     canChange: boolean,
     onChange: (whichO: number, value: any) => void,
-    index: number
+    index: number,
+    ghost?: string,
+    success: boolean
 }
 
 const WordLetterContainer: React.FC<IWordLetterContainer> = (props: IWordLetterContainer) => {
-    const { letter, value, canChange, index, onChange } = props;
+    const { letter, value, canChange, index, onChange, ghost } = props;
 
     const onInputChange= (e) => {
         onChange(index, e.target.value);
     }
+
+
+    console.log('success', props.success);
+    let ghostClassToAdd = props.success ? 'word_letter_containe__ghost_success' : '';
+    let letterValueOrInputClassToAdd = props.success && ghost ? 'word_letter__value_success' : '';
 
     return (
         <div className="word__letter_container">
@@ -26,13 +33,14 @@ const WordLetterContainer: React.FC<IWordLetterContainer> = (props: IWordLetterC
             </div>
             <div className="word_letter_container__value_or_input">
                 {canChange && 
-                    <input value={value} className='word_letter_container__input' type="text" onChange={onInputChange} />
+                    <input value={value} className={`word_letter_container__input ${letterValueOrInputClassToAdd}`} type="text" onChange={onInputChange} />
                 }
                 {!canChange && 
-                    <span className="word_letter__value">
+                    <span className={`word_letter__value ${letterValueOrInputClassToAdd}`}>
                         {value}
                     </span>
                 }
+                {ghost && <span className={`word_letter_container__ghost ${ghostClassToAdd}`}>{ghost}</span>}
             </div>
         </div>
     )
@@ -53,14 +61,16 @@ export enum EOperator {
 
 export interface ILetter {
     letter: string,
+    ghost?: string
     canChange: boolean,
     value: string,
-    role: ERole
+    role: ERole,
 }
 
 interface IWord {
     letters: ILetter[]
-    onChange: (index: number, value: any) => void
+    onChange: (index: number, value: any) => void,
+    success: boolean
 }
 
 const Word: React.FC<IWord> = (props: IWord) => {
@@ -69,7 +79,12 @@ const Word: React.FC<IWord> = (props: IWord) => {
     return (
         <div className="word__container">
             {letters.map((letter, index) => (
-                <WordLetterContainer key={index} index={index} letter={letter.letter} value={letter.value} canChange={letter.canChange} onChange={onChange} />
+                <WordLetterContainer 
+                    key={index} index={index}
+                    success={props.success} 
+                    letter={letter.letter} 
+                    ghost={letter.ghost}
+                    value={letter.value} canChange={letter.canChange} onChange={onChange} />
             ))}
         </div>
     )

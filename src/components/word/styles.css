@@ -22,6 +22,7 @@
   margin-top: 10px;
   height: 100px;
   align-items: center;
+  position: relative;
 }
 
 .word_letter_container__input {
@@ -32,4 +33,31 @@
   text-align: center;
   border-radius: 20px;
   color: #f00;
+  transition: all 0.6s;
+}
+
+.word_letter__value {
+  transition: all 0.6s;
+}
+
+.word_letter__value_success {
+  opacity: 0;
+}
+
+.word_letter_container__ghost {
+  position: absolute;
+  top: 70px;
+  font-size: 30px;
+  transition: all 0.6s;
+}
+
+.word_letter_containe__ghost_success {
+  top: calc(30%);
+}
+
+@media screen and (max-width: 400px) {
+  .word__letter_container {
+    font-size: 30px;
+    margin: 0px;
+  }
 }

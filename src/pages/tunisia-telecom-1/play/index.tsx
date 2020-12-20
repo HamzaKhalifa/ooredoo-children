@@ -12,7 +12,8 @@ interface ITunisiaTelecom {
     letters: ILetter[],
     attempts: number,
     isModalOpen: boolean,
-    known: [boolean, boolean, boolean, boolean]
+    known: [boolean, boolean, boolean, boolean],
+    success: boolean,
 }
 
 const TunisiaTelecomPlay = () => {
@@ -21,7 +22,8 @@ const TunisiaTelecomPlay = () => {
         letters:[], 
         attempts: 0,
         isModalOpen: false,
-        known: [false, false, false, false]
+        known: [false, false, false, false],
+        success: false
     });
 
     const reset = () => {
@@ -44,13 +46,21 @@ const TunisiaTelecomPlay = () => {
 
         let finalResult: number = calculate(tempResult, rightHandValue, letters[4].value);
 
-        let win: boolean = finalResult == introContext.statements.result;
+        let success: boolean = parseInt(finalResult + '') === parseInt(introContext.statements.result + '');
 
         setTunisiaTelecome({
             ...tunisiaTelecom,
             attempts: tunisiaTelecom.attempts + 1,
-            isModalOpen: win,
+            success
         })
+
+        // Only open the modal after the animation is finished
+        setTimeout(() => {
+            setTunisiaTelecome({
+                ...tunisiaTelecom,
+                isModalOpen: success,
+            })
+        }, 3000);
     }
 
     const calculate = (toUse1: number, toUse2: number, operator: string): number => {
@@ -112,7 +122,6 @@ const TunisiaTelecomPlay = () => {
         // Should never be able to change the operator
         newLetters[2].canChange = false;
         
-
         setTunisiaTelecome({
             ...tunisiaTelecom,
             letters: newLetters,
@@ -125,6 +134,7 @@ const TunisiaTelecomPlay = () => {
             <Word 
                 letters={tunisiaTelecom.letters}
                 onChange={onChange}
+                success={tunisiaTelecom.success}
             />
 
             <div className='tunisia_telecom_play__expected_result_container'>
@@ -134,9 +144,11 @@ const TunisiaTelecomPlay = () => {
 
             <p className='ooredoo_2_play__attempts'>Attempts: {tunisiaTelecom.attempts}</p>
 
-            <button onClick={submit} className="tunisia_telecom_play__submit_button">
-                Submit
-            </button>
+            {!tunisiaTelecom.success &&
+                <button onClick={submit} className="tunisia_telecom_play__submit_button">
+                    Submit
+                </button>
+            }
 
             <MyModal 
                 isOpen={tunisiaTelecom.isModalOpen} 
