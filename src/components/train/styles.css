@@ -1,0 +1,60 @@
+.train__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 90%;
+  margin: auto;
+}
+
+.train_wagon_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+}
+
+.train__wagon_value {
+  color: white;
+  font-size: 40px;
+}
+
+.train__normal_wagon_container {
+}
+
+.train__short_wagon_container {
+  position: relative;
+  top: 30px;
+  overflow: visible;
+}
+
+.train__short_wagon_container .train__wagon_value {
+  bottom: 30px;
+  position: relative;
+}
+
+.train__normal_wagon {
+  width: 100%;
+}
+
+.train__short_wagon {
+  width: 100%;
+}
+
+.train__wagon_input {
+  text-align: center;
+  border-radius: 20px;
+  font-size: 40px;
+  font-family: "NerkoOne" !important;
+  padding: 10px;
+  height: 20px;
+  width: 40px;
+  border: 3px solid white;
+  background-color: #68acff;
+  color: white;
+}
+
+.train__short_wagon_container .train__wagon_input {
+  position: relative;
+  bottom: 30px;
+}

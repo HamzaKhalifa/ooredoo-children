@@ -1,6 +1,6 @@
 import React from 'react'
 
-import utils from '../../utils';
+import { IWord } from './types';
 
 import './styles.css';
 
@@ -10,28 +10,45 @@ interface IWordLetterContainer {
     canChange: boolean,
     onChange: (whichO: number, value: any) => void,
     index: number,
+    success: boolean,
+    version: string,
     ghost?: string,
-    success: boolean
+    numberOfWords: number,
+    first: boolean,
+    last: boolean
 }
 
 const WordLetterContainer: React.FC<IWordLetterContainer> = (props: IWordLetterContainer) => {
-    const { letter, value, canChange, index, onChange, ghost } = props;
+    const { letter, value, canChange, index, onChange, ghost, version, first, last, success, numberOfWords } = props;
 
     const onInputChange= (e) => {
         onChange(index, e.target.value);
     }
 
-
-    console.log('success', props.success);
     let ghostClassToAdd = props.success ? 'word_letter_containe__ghost_success' : '';
     let letterValueOrInputClassToAdd = props.success && ghost ? 'word_letter__value_success' : '';
+    let valueOrInputClassToAdd = "";
+    if (version === "2" && success) {
+        if (first) {
+            valueOrInputClassToAdd = "word_letter_container__value_or_input_first";
+        }
+        if (last) {
+            valueOrInputClassToAdd = "word_letter_container__value_or_input_last"
+        }
+    }
 
     return (
         <div className="word__letter_container">
-            <div className="word__letter">
+            {version === "1" && <div className="word__letter">
                 {letter}
-            </div>
-            <div className="word_letter_container__value_or_input">
+            </div>}
+
+            <div 
+                // style={{
+                //     left: version === "2" && first && success ? 'calc(100% *' + (numberOfWords + 2) / 2 + ')' : 'inherit',
+                //     right: version === "2" && last && success ? 'calc(100% *' + (numberOfWords + 2) / 2 + ')' : 'inherit'
+                // }} 
+                className={"word_letter_container__value_or_input " + valueOrInputClassToAdd}>
                 {canChange && 
                     <input value={value} className={`word_letter_container__input ${letterValueOrInputClassToAdd}`} type="text" onChange={onInputChange} />
                 }
@@ -40,70 +57,47 @@ const WordLetterContainer: React.FC<IWordLetterContainer> = (props: IWordLetterC
                         {value}
                     </span>
                 }
-                {ghost && <span className={`word_letter_container__ghost ${ghostClassToAdd}`}>{ghost}</span>}
+                {ghost && version === "1" && <span className={`word_letter_container__ghost ${ghostClassToAdd}`}>{ghost}</span>}
             </div>
         </div>
     )
 }
 
-export enum ERole {
-    ToUse,
-    Result,
-    Operator, 
-    Neutral
-}
-
-export enum EOperator {
-    Sum,
-    Multiplication,
-    Substraction
-}
-
-export interface ILetter {
-    letter: string,
-    ghost?: string
-    canChange: boolean,
-    value: string,
-    role: ERole,
-}
-
-interface IWord {
-    letters: ILetter[]
-    onChange: (index: number, value: any) => void,
-    success: boolean
-}
 
 const Word: React.FC<IWord> = (props: IWord) => {
-    const { onChange, letters } = props;
+    const { onChange, letters, version, lastWord } = props;
 
     return (
         <div className="word__container">
             {letters.map((letter, index) => (
                 <WordLetterContainer 
+                    first={index === 0}
+                    last={false}
                     key={index} index={index}
                     success={props.success} 
                     letter={letter.letter} 
                     ghost={letter.ghost}
-                    value={letter.value} canChange={letter.canChange} onChange={onChange} />
+                    version={props.version}
+                    value={letter.value} 
+                    numberOfWords={letters.length}
+                    canChange={letter.canChange} onChange={onChange} />
             ))}
+
+            {version === "2" &&
+                <WordLetterContainer 
+                    index={letters.length}
+                    success={props.success} 
+                    letter={lastWord ? lastWord : "T"} 
+                    value={lastWord ? lastWord : "T"} 
+                    version={props.version}
+                    numberOfWords={letters.length}
+                    canChange={false} onChange={onChange} 
+                    last={true}
+                    first={false}
+                    />
+            }
         </div>
     )
-}
-
-export const getRandomOperator = (): string => {
-    let operators: EOperator[] = [EOperator.Substraction, EOperator.Multiplication, EOperator.Sum];
-    let operator: EOperator = operators[utils.getRandomInt(0, operators.length - 1)];
-
-    switch(operator) {
-        case EOperator.Substraction:
-            return '-';
-        case EOperator.Multiplication: 
-            return 'x';
-        case EOperator.Sum: 
-            return '+'
-        default: 
-            return '-'
-    }
 }
 
 export default Word

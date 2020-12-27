@@ -1,0 +1,13 @@
+.train_intro__container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.train_intro__play_button {
+  padding: 15px 30px;
+  font-size: 30px;
+  cursor: pointer;
+  margin-top: 30px;
+  border-radius: 20px;
+}

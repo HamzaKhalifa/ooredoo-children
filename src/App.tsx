@@ -12,6 +12,10 @@ import Ooredoo2Play from './pages/ooredoo-2/play';
 import TunisiaTelecomIntro, { TunisiaTelecomIntroContextProvider } from './pages/tunisia-telecom-1/intro';
 import TunisiaTelecomPlay from './pages/tunisia-telecom-1/play';
 
+import TrainIntro from './pages/train/intro';
+import TrainIntroContextProvider from './pages/train/intro/context';
+import TrainPlay from './pages/train/play';
+
 import './App.css';
 
 const App: React.FC = () => {
@@ -20,18 +24,24 @@ const App: React.FC = () => {
       <Ooredoo1IntroContextProvider>
         <Ooredoo2IntroContextProvider>
           <TunisiaTelecomIntroContextProvider>
-            <BrowserRouter>
-              <Route component={Intro} path='/' exact />
-              
-              <Route component={Ooredoo1Intro} path='/ooredoo-1' exact />
-              <Route component={Ooredoo1Play} path='/ooredoo-1/play' exact />
+            <TrainIntroContextProvider>
+              <BrowserRouter>
+                <Route component={Intro} path='/' exact />
+                
+                <Route component={Ooredoo1Intro} path='/ooredoo-1' exact />
+                <Route component={Ooredoo1Play} path='/ooredoo-1/play' exact />
 
-              <Route component={Ooredoo2Intro} path='/ooredoo-2' exact />
-              <Route component={Ooredoo2Play} path='/ooredoo-2/play' exact />
+                <Route component={Ooredoo2Intro} path='/ooredoo-2' exact />
+                <Route component={Ooredoo2Play} path='/ooredoo-2/play' exact />
 
-              <Route component={TunisiaTelecomIntro} path='/tunisia-telecom' exact />
-              <Route component={TunisiaTelecomPlay} path='/tunisia-telecom/play' exact />
-            </BrowserRouter>
+                <Route component={TunisiaTelecomIntro} path='/tunisia-telecom/:version' exact />
+                <Route component={TunisiaTelecomPlay} path='/tunisia-telecom/play/:version' exact />
+
+                <Route component={TrainIntro} path='/train' exact />
+                <Route component={TrainPlay} path="/train/play" exact />
+                
+              </BrowserRouter>
+            </TrainIntroContextProvider>
           </TunisiaTelecomIntroContextProvider>
         </Ooredoo2IntroContextProvider>
       </Ooredoo1IntroContextProvider>

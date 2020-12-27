@@ -1,0 +1,19 @@
+.train_play__submit_button {
+  padding: 15px 30px;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.train__play_container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.train_play__attempts {
+  font-size: 25px;
+  color: white;
+  text-align: center;
+  margin-top: 40px;
+}

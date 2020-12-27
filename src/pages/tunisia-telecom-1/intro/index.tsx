@@ -1,5 +1,7 @@
 import React, { createContext, Dispatch, useContext, useState, SetStateAction, useEffect } from 'react'
-import Word, { ILetter, ERole, getRandomOperator } from '../../../components/word';
+import Word from '../../../components/word';
+import { ILetter, ERole } from '../../../components/word/types';
+import  wordUtils from '../../../components/word/wordUtils';
 import utils from '../../../utils';
 
 import { RouteComponentProps } from 'react-router-dom';
@@ -31,6 +33,7 @@ const initialLetters: ILetter[] = [
         canChange: false, letter: 'E', value: '0', role: ERole.Result, ghost: 'M'
     },
 ]
+
 export type IStatements = {
     letters: ILetter[],
     result: number
@@ -59,15 +62,7 @@ const createStatementsWithResult = (statements: IStatements): IStatements => {
             break;
     }
 
-    console.log('to use 1', toUse1);
-    console.log('operator', statements.letters[2].value);
-    console.log('to use 2', toUse2);
-    console.log('temp Result', tempResult);
-
     let numberToAchieve = Math.abs(statements.result - tempResult);
-
-    console.log('number to achieve', numberToAchieve);
-    console.log('result', statements.result);
 
     statements.letters[6].value = numberToAchieve % 10 + '';
     statements.letters[5].value = parseInt(numberToAchieve / 10 + '') + '';
@@ -84,13 +79,13 @@ const createStatementsWithResult = (statements: IStatements): IStatements => {
 export const generateRandomStatements: Function = (): IStatements => {
     let statements: IStatements = {
         letters: [...initialLetters],
-        result: utils.getRandomInt(0, 100)
+        result: 0
     }
     
     statements.letters[1].value = utils.getRandomInt(0, 9) + '';
     statements.letters[3].value = utils.getRandomInt(0, 9) + '';
 
-    statements.letters[2].value = getRandomOperator();
+    statements.letters[2].value = wordUtils.getRandomOperator();
 
     return createStatementsWithResult(statements);
 }
@@ -111,8 +106,14 @@ export const TunisiaTelecomIntroContextProvider: React.FC = ({ children }) => {
     )
 }
 
-const TunisiaTelecom: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
+interface IParams {
+    version: string
+}
+
+const TunisiaTelecom: React.FC<RouteComponentProps<IParams>> = (props: RouteComponentProps<IParams>) => {
     const { setStatements, statements } = useContext<TunisiaTelecomContextType>(TunisiaTelecomIntroContext);
+
+    const { match: { params: { version } } } = props;
 
     useEffect(() => {
         setStatements(generateRandomStatements());
@@ -142,15 +143,13 @@ const TunisiaTelecom: React.FC<RouteComponentProps> = (props: RouteComponentProp
 
         let newStatements: IStatements = {...statements};
         newStatements.letters[index].value = value + '';
-
-        console.log('called on change');
+        
         setStatements(createStatementsWithResult(newStatements));
     }
 
     const onResultChange = (e) => {
         let newStatements: IStatements = {...statements};
         newStatements.result = e.target.value === '' ? '0' : e.target.value;
-        console.log('called on result change');
         setStatements(createStatementsWithResult(newStatements));
     }
     
@@ -160,17 +159,18 @@ const TunisiaTelecom: React.FC<RouteComponentProps> = (props: RouteComponentProp
                 onChange={onChange}
                 letters={statements.letters}
                 success={false}
-            />
+                version={version}
+                lastWord="T"
+            /> 
 
             <div className='tunisia_telelcom__result_input'>
                 <label className='tunisia_telecom__result_label'>Final wanted value</label>
                 <input className='tunisia_telecom__result_input' type="text" value={statements.result} onChange={onResultChange} />
             </div>
 
-            <button onClick={() => {props.history.push('/tunisia-telecom/play')}} className="tunisia_telecom_intro__play_button">
+            <button onClick={() => {props.history.push('/tunisia-telecom/play/' + version)}} className="tunisia_telecom_intro__play_button">
                 Start
             </button>
-
 
             <LeaveButton />
         </div>

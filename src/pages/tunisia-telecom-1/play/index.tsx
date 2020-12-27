@@ -2,8 +2,10 @@ import React, { useContext, useState, useEffect } from 'react'
 import MyModal from '../../../components/myModal/MyModal';
 
 import { TunisiaTelecomIntroContext, TunisiaTelecomContextType, generateRandomStatements } from '../intro';
-import Word, { ILetter } from '../../../components/word';
+import Word from '../../../components/word';
+import { ILetter } from '../../../components/word/types';
 import utils from '../../../utils';
+import { RouteComponentProps } from 'react-router-dom';
 
 import './styles.css';
 import LeaveButton from '../../../components/leave-button';
@@ -16,7 +18,13 @@ interface ITunisiaTelecom {
     success: boolean,
 }
 
-const TunisiaTelecomPlay = () => {
+interface IParams {
+    version: string
+}
+
+const TunisiaTelecomPlay: React.FC<RouteComponentProps<IParams>> = (props: RouteComponentProps<IParams>) => {
+    const { match: { params: { version } } } = props;
+
     const introContext: TunisiaTelecomContextType = useContext<TunisiaTelecomContextType>(TunisiaTelecomIntroContext);
     const [tunisiaTelecom, setTunisiaTelecome] = useState<ITunisiaTelecom>({
         letters:[], 
@@ -56,10 +64,10 @@ const TunisiaTelecomPlay = () => {
 
         // Only open the modal after the animation is finished
         setTimeout(() => {
-            setTunisiaTelecome({
-                ...tunisiaTelecom,
-                isModalOpen: success,
-            })
+            // setTunisiaTelecome({
+            //     ...tunisiaTelecom,
+            //     isModalOpen: success,
+            // })
         }, 3000);
     }
 
@@ -135,6 +143,7 @@ const TunisiaTelecomPlay = () => {
                 letters={tunisiaTelecom.letters}
                 onChange={onChange}
                 success={tunisiaTelecom.success}
+                version={version}
             />
 
             <div className='tunisia_telecom_play__expected_result_container'>

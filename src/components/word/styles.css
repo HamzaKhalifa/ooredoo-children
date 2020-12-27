@@ -3,7 +3,6 @@
   flex-direction: row;
   justify-content: center;
   font-size: 40px;
-  /* color: #f00; */
   color: white;
 }
 
@@ -13,6 +12,7 @@
   align-items: center;
   width: 40px;
   margin: 10px;
+  position: relative;
 }
 
 .word_letter_container__value_or_input {
@@ -23,6 +23,19 @@
   height: 100px;
   align-items: center;
   position: relative;
+  transition: all 1s;
+  left: 0px;
+  right: 0px;
+}
+
+.word_letter_container__value_or_input_first {
+  left: 480% !important;
+  right: inherit;
+}
+
+.word_letter_container__value_or_input_last {
+  right: 480%;
+  left: inherit;
 }
 
 .word_letter_container__input {
@@ -55,9 +68,16 @@
   top: calc(30%);
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   .word__letter_container {
     font-size: 30px;
     margin: 0px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .word__letter_container {
+    font-size: 30px;
+    margin: -5px;
   }
 }
