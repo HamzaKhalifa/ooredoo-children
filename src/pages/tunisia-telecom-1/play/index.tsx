@@ -64,10 +64,10 @@ const TunisiaTelecomPlay: React.FC<RouteComponentProps<IParams>> = (props: Route
 
         // Only open the modal after the animation is finished
         setTimeout(() => {
-            // setTunisiaTelecome({
-            //     ...tunisiaTelecom,
-            //     isModalOpen: success,
-            // })
+            setTunisiaTelecome({
+                ...tunisiaTelecom,
+                isModalOpen: success,
+            })
         }, 3000);
     }
 

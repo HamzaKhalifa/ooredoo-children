@@ -9,9 +9,11 @@
 
 .train_wagon_container {
   display: flex;
+  flex: 1;
   flex-direction: column;
+  min-height: 150px;
+  justify-content: space-between;
   align-items: center;
-  overflow: auto;
 }
 
 .train__wagon_value {
@@ -24,21 +26,21 @@
 
 .train__short_wagon_container {
   position: relative;
-  top: 30px;
   overflow: visible;
 }
 
 .train__short_wagon_container .train__wagon_value {
-  bottom: 30px;
-  position: relative;
+  text-align: center
 }
 
 .train__normal_wagon {
   width: 100%;
+  max-width: 400px;
 }
 
 .train__short_wagon {
   width: 100%;
+  max-width: 400px;
 }
 
 .train__wagon_input {
@@ -55,6 +57,23 @@
 }
 
 .train__short_wagon_container .train__wagon_input {
-  position: relative;
-  bottom: 30px;
 }
+
+@media screen and (max-width: 350px) {
+  .train_wagon_container {
+    min-height: 100px;
+  }
+
+  .train__wagon_value {
+    font-size: 30px;
+  }
+
+  .train__wagon_input {
+    max-width: 100px;
+    width: 30px; 
+    padding: 0px;
+    font-size: 30px;
+    margin-top: 5px;
+  }
+
+} 

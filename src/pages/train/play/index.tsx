@@ -51,7 +51,7 @@ const TrainPlay: React.FC = () => {
                 },
                 {
                     type: 1,
-                    value: '-----',
+                    value: '--',
                     canChange: false,
                 },
                 {
