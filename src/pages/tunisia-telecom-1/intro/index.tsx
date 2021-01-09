@@ -126,7 +126,6 @@ const TunisiaTelecom: React.FC<RouteComponentProps<IParams>> = (props: RouteComp
             
             if (isNaN(value)) value = 0;
         } else {
-            console.log(value + '');
             if (value == '') {
                 value = '*'
             } else {

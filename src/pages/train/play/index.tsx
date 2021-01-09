@@ -38,6 +38,7 @@ const TrainPlay: React.FC = () => {
                     type: 0,
                     value: trainIntroContext.train.wagons[0].value,
                     canChange: false,
+                    text: 'O'
                 },
                 {
                     type: 1,
@@ -48,16 +49,19 @@ const TrainPlay: React.FC = () => {
                     type: 0,
                     value: trainIntroContext.train.wagons[4].value,
                     canChange: false,
+                    text: 'O'
                 },
                 {
                     type: 1,
                     value: '--',
                     canChange: false,
+                    text: 'RED'
                 },
                 {
                     type: 0,
                     value: randomValue + '',
                     canChange: false,
+                    text: 'O'
                 },
                 {
                     type: 1,
@@ -68,6 +72,7 @@ const TrainPlay: React.FC = () => {
                     type: 0,
                     value: '0',
                     canChange: true,
+                    text: 'O'
                 },
             ]
         }

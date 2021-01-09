@@ -44,8 +44,6 @@ const Ooredoo1Play: React.FunctionComponent<RouteComponentProps> = (props: Route
     }
 
     const submit = () => {
-        console.log(play.response);
-        console.log(colors);
         setPlay({
             ...play,
             attempts: play.attempts + 1,

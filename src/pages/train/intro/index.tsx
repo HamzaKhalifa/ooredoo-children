@@ -48,8 +48,6 @@ const TrainIntro: React.FC<RouteComponentProps> = (props) => {
 
         setTrain(newTrain);
     }
-
-    trainUtils.printTrain(train);
     
     return (
         <div className="train_intro__container">

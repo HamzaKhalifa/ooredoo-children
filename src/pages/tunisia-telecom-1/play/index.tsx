@@ -120,7 +120,6 @@ const TunisiaTelecomPlay: React.FC<RouteComponentProps<IParams>> = (props: Route
         let indexesOfChangeables = [1, 3, 5, 6];
 
         for (let i = 0; i < newKnown.length; i++) {
-            console.log(newLetters[indexesOfChangeables[i]]);
             if (!newKnown[i]) {
                 newLetters[indexesOfChangeables[i]].value = '0';
             }

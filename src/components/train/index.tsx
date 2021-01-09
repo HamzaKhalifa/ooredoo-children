@@ -10,6 +10,7 @@ export enum EWagonType {
 }
 
 interface IWagon {
+    text?: string,
     value: string,
     type: EWagonType,
     canChange: boolean,
@@ -32,6 +33,7 @@ const Train: React.FC<ITrainProps> = (trainProps: ITrainProps) => {
         <div className="train__container">
             {wagons.map((wagon, index) => (
                 <div key={index} className={wagon.type === EWagonType.Normal ? "train_wagon_container train__normal_wagon_container" : "train_wagon_container train__short_wagon_container"}>
+                    {wagon.text && <span className='train_wagon__text'>{wagon.text}</span>}
                     {wagon.canChange ? 
                         <input onChange={trainProps.onChange} name={index + ''} value={wagon.value} type="text" className="train__wagon_input" />
                         : 

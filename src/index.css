@@ -4,6 +4,14 @@ html {
   font-family: "NerkoOne" !important;
 }
 
+body {
+  margin: 0px;
+}
+
+html, body, #root, .app__container {
+  height: 100%;
+}
+
 .circle-picker {
   justify-content: center;
 }

@@ -19,7 +19,7 @@ interface IWordLetterContainer {
 }
 
 const WordLetterContainer: React.FC<IWordLetterContainer> = (props: IWordLetterContainer) => {
-    const { letter, value, canChange, index, onChange, ghost, version, first, last, success, numberOfWords } = props;
+    const { letter, value, canChange, index, onChange, ghost, version, first, last, success } = props;
 
     const onInputChange= (e) => {
         onChange(index, e.target.value);
@@ -43,10 +43,10 @@ const WordLetterContainer: React.FC<IWordLetterContainer> = (props: IWordLetterC
                 {letter}
             </div>}
 
-            <div 
+            <div
                 // style={{
-                //     left: version === "2" && first && success ? 'calc(100% *' + (numberOfWords + 2) / 2 + ')' : 'inherit',
-                //     right: version === "2" && last && success ? 'calc(100% *' + (numberOfWords + 2) / 2 + ')' : 'inherit'
+                //     left: version === "2" && first && success ? 'calc(100% *' + (props.numberOfWords + 2) / 2 + ')' : 'inherit',
+                //     right: version === "2" && last && success ? 'calc(100% *' + (props.numberOfWords + 2) / 2 + ')' : 'inherit'
                 // }} 
                 className={"word_letter_container__value_or_input " + valueOrInputClassToAdd}>
                 {canChange && 

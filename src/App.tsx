@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
+import { AppContext, AppContextType } from './AppContext';
 import Intro from './pages/intro-page';
 
 import Ooredoo1Intro, { Ooredoo1IntroContextProvider } from './pages/ooredoo-1/intro';
@@ -18,9 +19,15 @@ import TrainPlay from './pages/train/play';
 
 import './App.css';
 
+window.addEventListener("locationchange", () => {
+  console.log('we are changing the background color');
+}, false);
+
 const App: React.FC = () => {
+  const appContext: AppContextType = useContext(AppContext);
+
   return (
-    <div className='app__container' style={styles.container}>
+    <div className='app__container' style={{ backgroundColor: appContext.appContext.backgroundColor, color: 'white' }}>
       <Ooredoo1IntroContextProvider>
         <Ooredoo2IntroContextProvider>
           <TunisiaTelecomIntroContextProvider>
@@ -47,14 +54,6 @@ const App: React.FC = () => {
       </Ooredoo1IntroContextProvider>
     </div>
   );
-}
-
-const styles = {
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
 }
 
 export default App;

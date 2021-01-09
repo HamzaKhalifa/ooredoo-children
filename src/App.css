@@ -39,6 +39,6 @@
 
 .app__container {
   display: flex;
-  align-items: center;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
 }

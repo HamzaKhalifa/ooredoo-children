@@ -104,7 +104,6 @@ const trainUtils: TrainUtilsType = {
         train.wagons.forEach(wagon => {
             trainValues += wagon.value + ' ';
         });
-        
         console.log(trainValues);
     },
 }
